@@ -47,3 +47,24 @@ So Salesforce uses Governor Limits to make sure:
 One organization's code cannot consume all the resources and negatively affect other organizations.
 
 ```
+### sObject
+```
+sObject ⭐⭐⭐
+
+Now we reach one of the most important Apex concepts. sObject represents a Salesforce record.
+For example, our custom object: Loan__c loan = new Loan__c();
+
+```
+
+### DML
+
+```
+Now let's understand DML properly
+insert is one of the DML operations in Apex.
+The main ones you need to know are: insert, update, delete, undelete, upsert
+insert Command : insert loan
+update command : loan.Loan_Status__c = 'Closed' -> update loan;
+delete Commmand : delete loan
+undelete loan : Restores a deleted record if it's recoverable from the Recycle Bin.
+upsert loan : Creates the record if it doesn't exist, or updates it when the matching external ID condition is met.
+```
