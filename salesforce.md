@@ -68,3 +68,40 @@ delete Commmand : delete loan
 undelete loan : Restores a deleted record if it's recoverable from the Recycle Bin.
 upsert loan : Creates the record if it doesn't exist, or updates it when the matching external ID condition is met.
 ```
+### SOQL = Salesforce se data READ karna
+### DML = Salesforce me data CREATE / CHANGE / DELETE karna
+
+### SOQL
+```JS
+SELECT Name, Loan_Amount__c
+FROM Loan__c
+WHERE Loan_Status__c = 'Active'
+
+Why does our query use __c : Because we're querying the API names, not the labels you see on the Salesforce page.
+For example, you created:
+Field Label: Loan Amount
+Salesforce gives it an API name: Loan_Amount__c
+
+//-- where caluse List<Loan__c> loans = [
+    SELECT Id, Name, Loan_Amount__c, Loan_Status__c
+    FROM Loan__c
+    WHERE Loan_Status__c = 'Active'
+];
+```
+
+### Instead of Query Editor, we can execute the query directly in Apex:
+```JS
+List<Loan__c> loans = [
+    SELECT Id, Name, Loan_Amount__c, Interest_Rate__c
+    FROM Loan__c
+];
+System.debug(loans);
+
+//-- multiple conditions
+List<Loan__c> loans = [
+    SELECT Id, Name, Loan_Amount__c, Loan_Status__c
+    FROM Loan__c
+    WHERE Loan_Status__c = 'Active'
+    AND Loan_Amount__c > 1000000
+];
+```
